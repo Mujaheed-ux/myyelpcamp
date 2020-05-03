@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheet/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+            <a class="navbar-brand" href="/">YelpCamp</a>
+            <!--<button class="btn btn-success ml-auto mr-1">Always Show</button>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-grow-0 text-right" id="navbarSupportedContent">
+                <div class="nav navbar-nav ml-auto">
+                   <%  if(!currentUser){ %>
+                    <div class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </div>
+               <% } else { %>
+                <div class="nav-item">
+                    <a class="nav-item" href="#">You Signed In As <%= currentUser.username %> </a>
+                </div>
+                    <div class="nav-item drop-down">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </div>
+                <% } %>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+
+            <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+            <% } %>
+        </div>
+       
